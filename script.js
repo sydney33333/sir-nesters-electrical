@@ -33,3 +33,17 @@ if (menuToggle && navLinks) {
         });
     });
 }
+
+// Set the automatic message for all WhatsApp buttons
+document.addEventListener("DOMContentLoaded", function () {
+    const whatsappMessage =
+        "Hello Sir Nesters Electrical! I found your website and I'm interested in your electrical services. I would like to make an enquiry. Please assist me. Thank you.";
+
+    document.querySelectorAll(
+        'a[href*="wa.me"], a[href*="whatsapp.com"]'
+    ).forEach(function (link) {
+        const whatsappURL = new URL(link.href);
+        whatsappURL.searchParams.set("text", whatsappMessage);
+        link.href = whatsappURL.toString();
+    });
+});
